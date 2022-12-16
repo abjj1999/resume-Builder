@@ -1,0 +1,24 @@
+.layout {
+    height: 100vh;
+    padding: 10px 15px;
+}
+
+.headerc {
+    height: 10%;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+
+.content {
+    border-radius: 7px;
+    height: 80%;
+    border: 1px solid gray;
+    margin-top: 20px;
+    box-shadow: 0 0 4px grey;
+    padding: 10px;
+}
