@@ -1,4 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;500&display=swap');
-body {
+* {
     font-family: 'Epilogue', sans-serif !important;
+}
+
+.hardhatIcon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #0a0e1585;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
