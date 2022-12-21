@@ -12,3 +12,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.headerIcon {
+    width: 40px;
+    height: 40px;
+    /* border-radius: 50%; */
+    /* background-color: #0a0e1585; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
