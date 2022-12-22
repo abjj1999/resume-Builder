@@ -22,3 +22,13 @@
     justify-content: center;
     align-items: center;
 }
+
+.site-card {
+    font-family: 'Epilogue', sans-serif !important;
+}
+
+.tab-header {
+    font-family: 'Epilogue', sans-serif !important;
+    font-size: 20px;
+    font-weight: 900;
+}

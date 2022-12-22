@@ -1,14 +1,17 @@
-import React from 'react'
-import { Card, Input, Form, message } from 'antd'
+import React, { useState } from 'react'
+import { Card, Input, Form, message, Spin } from 'antd'
 import { SiWolframlanguage } from 'react-icons/si'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 const Register = () => {
+  const [loading, setLoading] = useState(false)
   const onFinish = async (values) => {
+    setLoading(true)
     try {
       await axios.post('/api/auth/register', values)
       message.success('User created successfully')
+      setLoading(false)
     } catch (error) {
       message.error('Registration failed')
     }
@@ -90,9 +93,13 @@ const Register = () => {
               </Form.Item>
             </div>
             <div className="form-group  d-flex justify-content-start align-items-center ">
-              <button type="submit" className="btn btn-primary ">
-                Register
-              </button>
+              {loading ? (
+                <Spin className="m-2" />
+              ) : (
+                <button type="submit" className="btn btn-primary ">
+                  Register
+                </button>
+              )}
             </div>
           </Form>
           <p className="fw-bold mt-4">

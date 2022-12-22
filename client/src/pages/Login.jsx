@@ -1,20 +1,43 @@
-import React from 'react'
-import { Card, Input, Form, message } from 'antd'
+import React, { useState } from 'react'
+import { Card, Input, Form, message, Spin } from 'antd'
 
 import { SiWolframlanguage } from 'react-icons/si'
 import axios from 'axios'
 import { Link, useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 const Login = () => {
   const navigate = useNavigate()
+  const [loading, setLoading] = useState(false)
+
+  useEffect(() => {
+    if (localStorage.getItem('resumeBuilder-user')) {
+      navigate('/home')
+      message.info('You are already logged in')
+    }
+  }, [])
+
   const onFinish = async (values) => {
+    const Input = document.querySelectorAll('Input')
+    Input.forEach((input) => {
+      input.setAttribute('disabled', 'disabled')
+    })
+    setLoading(true)
     try {
       const user = await axios.post('/api/auth/login', values)
       message.success('Login successfully')
       console.log(user.data.user)
       localStorage.setItem('resumeBuilder-user', JSON.stringify(user.data.user))
+      setLoading(false)
       navigate('/home')
+      Input.forEach((input) => {
+        input.removeAttribute('disabled', 'disabled')
+      })
     } catch (error) {
       message.error('Login failed')
+      Input.forEach((input) => {
+        input.removeAttribute('disabled', 'disabled')
+      })
+      setLoading(false)
     }
   }
   return (
@@ -47,7 +70,7 @@ const Login = () => {
                 <Input
                   type="email"
                   className="form-control"
-                  id="email"
+                  id="email input"
                   placeholder="Email"
                 />
               </Form.Item>
@@ -60,16 +83,20 @@ const Login = () => {
                 <Input
                   type="password"
                   className="form-control"
-                  id="password"
+                  id="password input"
                   placeholder="Password"
                 />
               </Form.Item>
             </div>
 
             <div className="form-group  d-flex justify-content-start align-items-center ">
-              <button type="submit" className="btn btn-primary ">
-                Login
-              </button>
+              {loading ? (
+                <Spin className="m-2" />
+              ) : (
+                <button type="submit" className="btn btn-primary ">
+                  Login
+                </button>
+              )}
             </div>
           </Form>
           <p className="fw-bold mt-4">
