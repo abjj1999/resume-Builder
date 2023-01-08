@@ -10,6 +10,7 @@ app.use(express.urlencoded({ extended: true }))
 
 const authRouter = require('./routes/auth')
 app.use('/api/auth', authRouter)
+app.use('/api/update', require('./routes/profile'))
 
 app.get('/', (req, res) => res.send('Hello World!'))
 

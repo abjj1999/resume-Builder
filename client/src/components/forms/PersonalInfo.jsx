@@ -2,11 +2,18 @@ import { Input } from 'antd'
 import React from 'react'
 import { AiOutlineClear, AiOutlineSave } from 'react-icons/ai'
 import { Form } from 'antd'
+import axios from 'axios'
 
 const { TextArea } = Input
 const PersonalInfo = () => {
-  const personalInfo = (values) => {
+  const localSUser = JSON.parse(localStorage.getItem('resumeBuilder-user'))
+  console.log(localSUser)
+  const personalInfo = async (values) => {
+    if(localSUser !== null){
+      console.log(localSUser)
+    }
     console.log(values)
+    const data = await axios.post('/api/update/personalInfo', {...values, _id: localSUser._id})
   }
   return (
     <Form onFinish={personalInfo} className="h-100">
@@ -47,12 +54,15 @@ const PersonalInfo = () => {
           <label htmlFor="email">
             Email <span className="text-danger">*</span>
           </label>
-          <Form.Item name="email">
+          <Form.Item name="email" >
             <Input
               type="email"
               className="form-control"
               id="email"
-              placeholder="email@example.com"
+              placeholder={`${localSUser.email}`}
+              disabled
+              
+              
             />
           </Form.Item>
         </div>

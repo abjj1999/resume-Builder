@@ -23,38 +23,38 @@ const userSchema = new mongoose.Schema(
         },
         FirstName: {
             type: String,
-            required: false,
+            default: '',
             trim: true,
 
         },
         LastName: {
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
         Phone:{
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
         Portfolio:{
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
         Objective: {
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
         City:{
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
         State:{
             type: String,
-            required: false,
+            default: '',
             trim: true,
         },
 
