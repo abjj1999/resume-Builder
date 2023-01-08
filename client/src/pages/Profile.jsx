@@ -1,7 +1,6 @@
 import React from 'react'
 import DefaultLayout from '../components/DefaultLayout'
 import { Tabs } from 'antd'
-import { Header } from 'antd/es/layout/layout'
 import PersonalInfo from '../components/forms/PersonalInfo'
 import WorkExp from '../components/forms/WorkExp'
 import Education from '../components/forms/Education'

@@ -102,7 +102,70 @@ const Education = () => {
             </div>
           )}
         </Form.List>
-        {/* add skills here  */}
+        <h4 className="m-2 text-center mb-4">Skills</h4>
+        <Form.List name="Skills">
+          {(fields, { add, remove }) => (
+            <div className="border p-3 m-3">
+              {fields.map(({ key, name, ...restField }) => (
+                <div className="">
+                  <Space
+                    key={key}
+                    style={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                      flexWrap: 'wrap',
+                    }}
+                  >
+                    <Form.Item
+                      {...restField}
+                      label="Skill"
+                      name={[name, 'skill']}
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Missing Skill',
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Skill" />
+                    </Form.Item>
+                    <Form.Item
+                      {...restField}
+                      name={[name, 'years']}
+                      label="Years of Experience" 
+                      rules={[
+                        {
+                          required: true,
+                          message: 'Missing Years of Experience',
+                        },
+                      ]}
+                    >
+                      <Input placeholder="Years" />
+                    </Form.Item>
+                    <Form.Item>
+                      <MinusCircleOutlined
+                        className="fs-5"
+                        onClick={() => remove(name)}
+                      />
+                    </Form.Item>
+                  </Space>
+                </div>
+              ))}
+
+              <Form.Item className="d-flex justify-content-center">
+                <Button
+                  type="dashed"
+                  onClick={() => add()}
+                  block
+                  icon={<PlusOutlined />}
+                >
+                  Add field
+                </Button>
+              </Form.Item>
+            </div>
+          )}
+        </Form.List>
+       
 
         <Form.Item>
           <Button type="primary" htmlType="submit">
