@@ -47,7 +47,7 @@ const PersonalInfo = () => {
           <label htmlFor="email">
             Email <span className="text-danger">*</span>
           </label>
-          <Form.Item name="Email">
+          <Form.Item name="email">
             <Input
               type="email"
               className="form-control"

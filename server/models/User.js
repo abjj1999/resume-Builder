@@ -20,7 +20,49 @@ const userSchema = new mongoose.Schema(
             required: true,
             trim: true,
 
-        }
+        },
+        FirstName: {
+            type: String,
+            required: false,
+            trim: true,
+
+        },
+        LastName: {
+            type: String,
+            required: false,
+            trim: true,
+        },
+        Phone:{
+            type: String,
+            required: false,
+            trim: true,
+        },
+        Portfolio:{
+            type: String,
+            required: false,
+            trim: true,
+        },
+        Objective: {
+            type: String,
+            required: false,
+            trim: true,
+        },
+        City:{
+            type: String,
+            required: false,
+            trim: true,
+        },
+        State:{
+            type: String,
+            required: false,
+            trim: true,
+        },
+
+        // Education
+        eduaction: [],
+        Skills: [],
+        Experience: [],
+
     },
     {
         timestamps: true,
